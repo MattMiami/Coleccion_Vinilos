@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.HomeFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/aldrich"
+                android:text="COLLECTION"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <EditText
+                android:id="@+id/etViniloName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="15sp"
+                android:layout_weight="1"
+                android:backgroundTint="#FF065A"
+                android:ems="10"
+                android:fontFamily="@font/aldrich"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/etViniloGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="15sp"
+                android:layout_weight="1"
+                android:backgroundTint="#FF065A"
+                android:ems="10"
+                android:fontFamily="@font/aldrich"
+                android:hint="Genre"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/etViniloYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="15sp"
+                android:layout_weight="1"
+                android:backgroundTint="#FF065A"
+                android:ems="10"
+                android:fontFamily="@font/aldrich"
+                android:hint="Year"
+                android:inputType="number"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5sp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etViniloPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15sp"
+                    android:layout_marginEnd="15sp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FF065A"
+                    android:baselineAligned="false"
+                    android:ems="10"
+                    android:fontFamily="@font/aldrich"
+                    android:hint="Photo URL"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/btSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15sp"
+                    android:layout_marginEnd="15sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_botton"
+                    android:baselineAligned="false"
+                    android:fontFamily="@font/aldrich"
+                    android:text="SEARCH"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btAddVinilo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="15sp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_botton"
+                android:fontFamily="@font/aldrich"
+                android:text="ADD VINYL"
+                android:textColor="#000000" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvVinilos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10sp"
+                android:background="#FF065A" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>
