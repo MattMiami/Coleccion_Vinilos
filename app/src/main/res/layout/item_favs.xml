@@ -11,45 +11,39 @@
     android:padding="@dimen/cardview_compat_inset_shadow">
 
     <TextView
-        android:id="@+id/viniloName"
-        android:layout_width="0dp"
+        android:id="@+id/favName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="20sp"
         android:layout_marginTop="10sp"
-        android:layout_marginEnd="20dp"
         android:fontFamily="@font/aldrich"
         android:textAlignment="textStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.259"
-        app:layout_constraintStart_toEndOf="@+id/ivVinilo"
+        app:layout_constraintStart_toEndOf="@+id/ivFav"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/viniloYear"
+        android:id="@+id/favYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="20sp"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favName" />
+
+    <TextView
+        android:id="@+id/favGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="10sp"
+        android:fontFamily="@font/aldrich"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toEndOf="@+id/ivVinilo" />
-
-    <TextView
-        android:id="@+id/viniloGenre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/aldrich"
-        android:textAlignment="textStart"
-        app:layout_constraintBottom_toTopOf="@+id/viniloYear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toEndOf="@+id/ivVinilo"
-        app:layout_constraintTop_toBottomOf="@+id/viniloName"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintTop_toBottomOf="@+id/favYear" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivVinilo"
+        android:id="@+id/ivFav"
         android:layout_width="94dp"
         android:layout_height="90dp"
         app:civ_border_color="#FF065A"
@@ -58,15 +52,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageButton
-        android:id="@+id/addToFav"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/item_vinilo_draw"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toEndOf="@+id/viniloGenre"
-        app:layout_constraintTop_toBottomOf="@+id/viniloName"
-        app:srcCompat="@drawable/ic_baseline_favorite_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

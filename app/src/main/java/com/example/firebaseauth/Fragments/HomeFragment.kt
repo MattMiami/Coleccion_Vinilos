@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.firebaseauth.Adaptadores.FavoritosAdapter
+import com.example.firebaseauth.Adaptadores.VinilosAdapter
 import com.example.firebaseauth.Modelos.Users
 import com.example.firebaseauth.Modelos.Vinilo
 import com.example.firebaseauth.R
@@ -15,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_vinilos.*
 import kotlinx.android.synthetic.main.item_vinilo.view.*
 import java.lang.NullPointerException
 
@@ -28,6 +32,7 @@ class HomeFragment : Fragment() {
     var database =
         FirebaseDatabase.getInstance("https://fir-auth-2021-default-rtdb.europe-west1.firebasedatabase.app/")
     var vinilosList = ArrayList<Vinilo>()
+    var listaFavs = ArrayList<Vinilo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,11 +100,12 @@ class HomeFragment : Fragment() {
         })
 
 
+//Para obtener el número de Vinilos en la coleccion del usuario
         database.reference.child("USERS")
             .addValueEventListener(object : ValueEventListener {
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    //Para obtener el número de Vinilos en la coleccion del usuario
+
                     vinilosList.clear()
                     for (xVinilo in dataSnapshot.child(auth?.uid!!).child("Coleccion").children) {
                         val name = xVinilo.child("name").getValue(String::class.java)!!
@@ -129,7 +135,45 @@ class HomeFragment : Fragment() {
             })
 
 
+        //Para obtener la lista de favoritos del usuario
+        database.reference.child("USERS").child(auth?.uid!!).child("Favoritos")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                    listaFavs.clear()
+                    for (xVinilo in dataSnapshot.children) {
+                        val name = xVinilo.child("name").getValue(String::class.java)!!
+                        val foto = xVinilo.child("foto").getValue(String::class.java)!!
+                        val year = xVinilo.child("year").getValue(String::class.java)!!
+                        val genre = xVinilo.child("genre").getValue(String::class.java)!!
+
+                        var vinilo = Vinilo(name, foto, year, genre)
+
+                        listaFavs.add(vinilo)
+
+                    }
+
+
+                    try {
+                        tvNumeroFav.text = listaFavs.size.toString()
+                        rvFavs.layoutManager = LinearLayoutManager(context)
+                        val adapter = FavoritosAdapter(listaFavs)
+                        rvFavs.adapter = adapter
+                    } catch (nex: NullPointerException) {
+
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
+
     }
+
+
 
 
 }
